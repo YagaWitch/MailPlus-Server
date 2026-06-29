@@ -88,4 +88,5 @@ sudo chmod 755 "/volume/@appstore/MailPlus-Server/lib/"
 
 img/https://github.com/YagaWitch/MailPlus-Server/blob/main/s.png
 
+![lic](s.png)
 
