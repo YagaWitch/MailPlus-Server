@@ -57,7 +57,7 @@ In simplified terms, the trust chain is built around an embedded Synology public
 
 If this code helped you and you would like to support my work:
 
-Ethereum: 0xcD3e7014164c462c07aD2700D1206Fb586388428
+BTC: bc1qptkfe42lcrrkwk5pr96spyfdmvwyx6gaq5vf0q94z2sz83djys3qdzrqjc
 
 
 ## Synology MailPlus Server Research Notes 4.0.1-31663
