@@ -76,7 +76,9 @@ The general process is:
 > This project is for educational research only.
 > It does not provide or support license bypassing, cracking, redistribution of proprietary files, or unauthorized modification of commercial software.
 
-change volum number^
+change volum number
+
+echo "0.0.0.0 license.synology.com" | sudo tee -a /etc/hosts
 
 sudo chmod a=rwx "/volume/@appstore/MailPlus-Server/lib/libmailserver-license.so.1.0"
 sudo chmod a=rwx "/volume/@appstore/MailPlus-Server/lib/"
