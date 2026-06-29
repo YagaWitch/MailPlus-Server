@@ -87,3 +87,5 @@ sudo chmod 755 "/volume/@appstore/MailPlus-Server/lib/libmailserver-license.so.1
 sudo chmod 755 "/volume/@appstore/MailPlus-Server/lib/"
 
 https://github.com/YagaWitch/MailPlus-Server/blob/main/s.png
+
+img/s.png
