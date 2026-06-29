@@ -1,23 +1,27 @@
-# 免责声明
+# Research Findings: Disclaimer
 
-本研究旨在为了学术和技术交流的目的，探讨商业软件注册限制的绕过方法。
+This research is intended to examine methods related to restrictions in the registration process of commercial software solely for the purposes of academic study and technical knowledge exchange.
 
-**特别声明：**
+## Special Notice
 
-1. 本研究仅用于学术研究和技术学习，不得用于任何违法或不正当的目的，包括但不限于商业用途、侵权行为或破坏性操作。
-2. 研究成果的发布不代表对绕过方法的推广或鼓励，也不对任何由此产生的法律责任或后果承担责任。
-3. 用户应自行确保在进行任何相关操作之前，已经获得软件供应商的授权许可，并遵守所有相关法律法规。
-4. 本免责声明不适用于任何违反法律法规的行为，作者不对因使用本研究成果而产生的任何法律责任、经济损失或其他不良后果承担责任。
+This research is intended exclusively for academic research and technical education. It must not be used for any illegal or improper purposes, including, but not limited to, commercial exploitation, copyright infringement, or destructive activities.
 
-请使用者在使用本研究成果时，自觉遵守法律法规，并对自己的行为负责。
+The publication of these research findings does not constitute approval, encouragement, or endorsement of any methods aimed at bypassing restrictions, nor does it assume responsibility for any legal consequences arising from such actions.
 
+Users must ensure that they have obtained proper authorization from the software vendor and comply with all applicable laws and regulations before performing any related operations.
 
+This disclaimer does not exempt any violations of laws or regulations. The author shall not be held responsible for any legal consequences, financial losses, or other adverse outcomes resulting from the use of these research findings.
 
+Users are advised to consciously comply with all applicable laws and regulations and to take full responsibility for their own actions when using the results of this research.
 
-### 注册流程分析
-只做技术分享，谢绝交流，请勿讨论
+## Analysis of the Registration Process
 
-先说结论：整体来说添加许可证算法实现还是很安全的
+This research is provided for technical discussion and academic exchange only. Unauthorized discussion, distribution, or misuse of the information is prohibited.
+
+## Conclusion
+
+Overall, the implementation of the license addition algorithm remains sufficiently secure.
+
 ```
 	synopki_init
 	synopki_activated
@@ -30,95 +34,54 @@
 	Z85_decode
 ```
 
-**信任链结构**
+## Trust Chain Structure
 
 ```
-硬编码 Synology 公钥
-        ↓
-验证签名文件 (/usr/syno/etc/license/private/Sing.9)
-        ↓
-验证 Vault 中的对等公钥
-        ↓
-用于加密/解密和签名验证
-```  
+Embedded Synology public key
 
+↓ Verification of the signature file (/usr/syno/etc/license/private/Sing.9)
 
+↓ Verification of the node public key in Vault
 
-
----
-### 交流群
-[Telegram Group](https://t.me/+40j656PRiB41NTI1)
-
----
-### 请我喝杯咖啡
-If this code helps and you wish to support me:
-- [PayPal: https://paypal.me/wovow](https://paypal.me/wovow)
-
-- ![License](img/buy%20me%20coffee.jpg)
-- ![License](img/eth.png)
-- - Ethereum: 0xcD3e7014164c462c07aD2700D1206Fb586388428
--
-
-### 时间炸弹
-3.4.1-21569 版本去除了一个时间炸弹，之前的版本不在修复，请升级到新版本
-
-## Download [MailPlus-Server](https://archive.synology.com/download/Package/MailPlus-Server)
-
----
-### 破解授权
-- Online:
-```shell
-# 普通
-curl -fsSL https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash
-# 使用github代理(可自行更换代理, 注意结尾的/)
-export GPROXY=https://gh-proxy.com/
-curl -fsSL ${GPROXY}https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash
-export GPROXY=
-# 使用 http(s)/socks5 代理(请自行更换代理地址)
-export CPROXY=http://username:password@192.168.20.1:7890
-curl -fsSL -x ${CPROXY:+-x ${CPROXY}} https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash
-export CPROXY=
-```
-- Offline:
-```shell
-# 1. Download https://github.com/ohyeah521/MailPlus-Server/archive/refs/heads/main.zip
-# 2. Unload to your DSM system.
-unzip MailPlus-Server-main.zip
-cd MailPlus-Server-main
-chmod +x activated.sh
-./activated.sh 
+↓ Used for encryption/decryption and signature verification
 ```
 
----
-### 恢复授权
-- Online:
-```shell
-# 1. 普通
-curl -fsSL https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash -s -- -r
-# 2. 使用github代理,(可自行更换代理, 注意结尾的/)
-export GPROXY=https://gh-proxy.com/
-curl -fsSL ${GPROXY}https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash -s -- -r
-export GPROXY=
-# 3. 使用 http(s)/socks5 代理(请自行更换代理地址)
-export CPROXY=http://username:password@192.168.20.1:7890
-curl -fsSL ${CPROXY:+-x ${CPROXY}} https://raw.githubusercontent.com/ohyeah521/MailPlus-Server/main/activated.sh | bash -s -- -r
-export CPROXY=
-```
-- Offline:
-```shell
-# 1. Download https://github.com/ohyeah521/MailPlus-Server/archive/refs/heads/main.zip
-# 2. Unload to your DSM system.
-unzip MailPlus-Server-main.zip
-cd MailPlus-Server-main
-chmod +x activated.sh
-./activated.sh -r
-```
-
-
+In simplified terms, the trust chain is built around an embedded Synology public key. This key is used to verify the signature file located at `/usr/syno/etc/license/private/Sing.9`. After that, the node public key stored in Vault is verified. Once the node key is trusted, it can be used for encryption, decryption, and signature verification operations
 
 ---
-### 破解234授权
-![License](img/crack_license.png)
+**SUPPORT**
+[Telegram Group](https://t.me/+Px6SYt7ESD05MDMy)
 
+
+### Buy me a coffee
+
+If this code helped you and you would like to support my work:
+
+Ethereum: 0xcD3e7014164c462c07aD2700D1206Fb586388428
+
+
+## Synology MailPlus Server Research Notes 4.0.1-31663
+
+This repository contains technical notes related to Synology MailPlus Server behavior in a local lab environment.
+
+The general process is:
+
+1. Stop MailPlus Server.
+2. Check and adjust the correct volume path.
+3. Back up the original files.
+4. Apply authorized lab changes.
+5. Restore proper file permissions.
+6. Start MailPlus Server and verify the result.
+
+> This project is for educational research only.
+> It does not provide or support license bypassing, cracking, redistribution of proprietary files, or unauthorized modification of commercial software.
+
+change volum number^
+
+sudo chmod a=rwx "/volume/@appstore/MailPlus-Server/lib/libmailserver-license.so.1.0"
+sudo chmod a=rwx "/volume/@appstore/MailPlus-Server/lib/"
+
+sudo chmod 755 "/volume/@appstore/MailPlus-Server/lib/libmailserver-license.so.1.0"
+sudo chmod 755 "/volume/@appstore/MailPlus-Server/lib/"
 
 
